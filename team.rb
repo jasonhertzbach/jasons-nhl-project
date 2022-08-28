@@ -13,6 +13,7 @@ parsed_roster = roster['teams'][0]
 standings = HTTParty.get(@team_url + '/stats', @options)
 parsed_standings = standings['stats'][0]['splits'][0]['stat']
 
+team_id = parsed_roster['id']
 team_name = parsed_roster['name']
 team__venue_name = parsed_roster['venue']['name']
 
@@ -33,6 +34,7 @@ home = sched['dates'][0]['games'][0]['teams']['home']['team']['name']
 first_game_of_season = sched['dates'][0]['date']
 first_oppo_name = (home == roster['teams'][0]['name']) ? away :  home
 
+p team_id
 p team_name
 p team__venue_name
 p games_played
