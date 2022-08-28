@@ -9,9 +9,9 @@ class NhlService
     def initialize
     end
 
-    def get_team(team_id = '1', season = '20212022')
+    def get_team(id, season)
 
-        team_url = "#{URL}/teams/#{team_id}"
+        team_url = "#{URL}/teams/#{id}"
         options = { query: { season: season} }
 
         roster = HTTParty.get(team_url + '?expand=team.roster', options)
@@ -20,7 +20,7 @@ class NhlService
         standings = HTTParty.get(team_url + '/stats', options)
         parsed_standings = standings['stats'][0]['splits'][0]['stat']
 
-        options = { query: { season: season, teamId: team_id} }
+        options = { query: { season: season, teamId: id} }
         sched = HTTParty.get(URL + 'schedule', options)
 
         away = sched['dates'][0]['games'][0]['teams']['away']['team']['name']
@@ -40,9 +40,9 @@ class NhlService
         team
     end
 
-    def get_player(player_id = '8476792', season = '20212022')
+    def get_player(id, season)
 
-        player_url = "#{URL}/people/#{player_id}"
+        player_url = "#{URL}/people/#{id}"
         options = { query: { season: season} }
 
         player = HTTParty.get(player_url, options)
@@ -67,5 +67,4 @@ class NhlService
         player.player_points = parsed_player_stats['points']
         player
     end
-
 end
