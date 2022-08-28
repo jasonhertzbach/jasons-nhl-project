@@ -1,6 +1,23 @@
-require 'httparty'
+require './services/nhl_service.rb'
 
-URL = 'https://statsapi.web.nhl.com/api/v1/'
+type = ARGV[0]
+id = ARGV[1]
+season = ARGV[2]
 
-@team = ARGV[0]
-@seasons = ARGV[1]
+service = NhlService.new
+
+if type == 'team'
+    result = service.get_team(id, season)
+end
+
+if type == 'player'
+    result = service.get_player(id, season)
+end
+
+CSV.open("results.csv", "w") do |csv|
+    values = []
+    result.instance_variables.each do |var|
+        values << result.instance_variable_get(var)
+    end
+    csv << values
+end
