@@ -1,23 +1,23 @@
 require './services/nhl_service.rb'
 
-type = ARGV[0]
-id = ARGV[1]
-season = ARGV[2]
-
 service = NhlService.new
+service.set_and_validate_inputs(ARGV[0], ARGV[1], ARGV[2])
 
-if type == 'team'
-    result = service.get_team(id, season)
+if service.type == 'team'
+    result = service.get_team
 end
 
-if type == 'player'
-    result = service.get_player(id, season)
+if service.type == 'player'
+    result = service.get_player
 end
 
-CSV.open("results.csv", "w") do |csv|
-    values = []
-    result.instance_variables.each do |var|
-        values << result.instance_variable_get(var)
+if result
+    CSV.open("#{service.type}_results.csv", "w") do |csv|
+        values = []
+        result.instance_variables.each do |var|
+            values << result.instance_variable_get(var)
+        end
+        csv << values
     end
-    csv << values
+    p "open #{service.type}_results.csv for result :)"
 end
