@@ -29,15 +29,15 @@ This application will output a CSV file with the following information for eithe
   * Points
 
 # Before getting started
-this guide is assuming that you have ruby installed, I am using v3.0.0. Older versions should work as well. If you do not have Ruby installed, you can use this page to install it https://www.ruby-lang.org/en/documentation/installation/
+This guide is assuming that you have ruby installed, I am using v3.0.0. Older versions should work as well. If you do not have Ruby installed, you can use this page to install it https://www.ruby-lang.org/en/documentation/installation/
 
 You will need to install 2 gems.
-to install them, you will need to run:
+To install them run the following commands:
 * `gem install httparty`
 * `gem install rspec`
 
 # Getting Started!
-to run the application, you need type `ruby` followed by the file name and 3 arguments: `type`, `id`, and `season` into the terminal
+To run the application, you need type `ruby` followed by the file name and 3 arguments: `type`, `id`, and `season` into the terminal.
 * `type` needs to be either 'team' or 'player'
 * `id` will be the Id for either team or player
 * `season` is the year the season starts and ends in yyyyyyyy format (eg. 202020201)
@@ -45,4 +45,7 @@ to run the application, you need type `ruby` followed by the file name and 3 arg
 team example: `ruby application.rb team 4 20202021`
 player example: `ruby application.rb player 8476792 20202021`
 
-the Csv file out to your working directory named `type`_results.csv 
+The CSV file will output to your working directory, named `type`_results.csv
+
+# Running tests
+To run the tests, use the command `ruby test_application.rb`
