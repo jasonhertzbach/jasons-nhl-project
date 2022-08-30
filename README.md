@@ -42,4 +42,4 @@ to run the application, you need type `ruby` followed by the file name and 3 arg
 team example: `ruby application.rb team 4 20202021`
 player example: `ruby application.rb player 8476792 20202021`
 
-the Csv file out to your working directory
+the Csv file out to your working directory named `type`_results.csv 
