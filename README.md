@@ -29,9 +29,12 @@ This application will output a CSV file with the following information for eithe
   * Points
 
 # Before getting started
-You will need to install 2 gems
-`gem install httparty`
-`gem install rspec`
+this guide is assuming that you have ruby installed, I am using v3.0.0. Older versions should work as well. If you do not have Ruby installed, you can use this page to install it https://www.ruby-lang.org/en/documentation/installation/
+
+You will need to install 2 gems.
+to install them, you will need to run:
+* `gem install httparty`
+* `gem install rspec`
 
 # Getting Started!
 to run the application, you need type `ruby` followed by the file name and 3 arguments: `type`, `id`, and `season` into the terminal
